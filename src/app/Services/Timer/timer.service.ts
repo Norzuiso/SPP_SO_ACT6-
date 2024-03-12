@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ProcessTime} from "../../Classes/ProcessTime";
 import {interval, Observable, Subject, Subscription, takeUntil, tap} from "rxjs";
+import {EjecucionService} from "../Estados/Ejecucion/ejecucion.service";
+import {StateManagerService} from "../Estados/StateManager/state-manager.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class TimerService {
 
   public tiempoObservable: Observable<ProcessTime>;
 
-  constructor() {
+  constructor(protected StateMangerService: StateManagerService) {
     this.tiempoObservable = this.tiempoSubject.asObservable();
 
     this.tiempoSubscription = interval(1000).pipe( // Intervalo de 10 milisegundos
@@ -48,6 +50,8 @@ export class TimerService {
   private segundos: number = 0;
 
   private incrementarSegundos() {
+
+    this.StateMangerService.incrementTimes()
     this.segundos++;
 
     if (this.segundos === 60) {
@@ -55,6 +59,7 @@ export class TimerService {
       this.incrementarMinutos();
     }
   }
+
 
   private incrementarMinutos() {
     this.minutos++;

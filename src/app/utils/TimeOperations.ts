@@ -1,5 +1,14 @@
 import {ProcessTime} from "../Classes/ProcessTime";
 
+export const processTimeOneSecond = new ProcessTime(0, 1);
+
+
+export function increment(time1: ProcessTime): ProcessTime{
+  return sumTimer(time1, processTimeOneSecond)
+}
+export function decrement(time1: ProcessTime): ProcessTime{
+  return restTime(time1, processTimeOneSecond)
+}
 export function sumTimer(time1: ProcessTime, time2: ProcessTime): ProcessTime {
   let result: ProcessTime = new ProcessTime(0, 0);
   result.minutes = time1.minutes + time2.minutes

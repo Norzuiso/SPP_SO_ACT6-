@@ -8,4 +8,14 @@ export class ListosService {
   ListosProcessList: Process[] = []
 
   constructor() { }
+
+  isListosEmty(){
+    let isProcessListEmpty = false
+    this.ListosProcessList.forEach((value, index) => {
+      if (value.Operation === "") {
+        isProcessListEmpty = true
+      }
+    })
+    return isProcessListEmpty
+  }
 }

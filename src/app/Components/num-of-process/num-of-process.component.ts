@@ -22,7 +22,6 @@ export class NumOfProcessComponent {
 
   generateJobs() {
     this.processQuantity = this.formGroup.getRawValue()["processQuantityFormControl"]
-    console.log(this.processQuantity)
     if (this.processQuantity <= 0) {
       alert("Cantidad de trabajos invalida. Tiene que ser mayor a 0")
     } else {

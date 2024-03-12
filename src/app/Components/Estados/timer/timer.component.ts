@@ -10,5 +10,6 @@ export class TimerComponent {
 
 
   constructor(protected timerService: TimerService) {
+    this.timerService.startTimer()
   }
 }
