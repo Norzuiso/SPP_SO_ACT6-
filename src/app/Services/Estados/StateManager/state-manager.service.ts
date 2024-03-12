@@ -6,6 +6,7 @@ import {ListosService} from "../Listos/listos.service";
 import {EjecucionService} from "../Ejecucion/ejecucion.service";
 import {BloqueadoService} from "../Bloqueado/bloqueado.service";
 import {TerminadoService} from "../Terminado/terminado.service";
+import {subscribeToWorkflow} from "@angular/cli/src/command-builder/utilities/schematic-workflow";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,11 @@ export class StateManagerService {
   }
 
   incrementTimes() {
+    this.incrementEjecucion();
+    this.incrementBloqueados()
+  }
+
+  private incrementEjecucion() {
     this.ejecucionService.incrementEjecucion()
     if (this.isProcessInEjecucionDone()) {
       this.clearEjecucion()
@@ -39,47 +45,63 @@ export class StateManagerService {
   }
 
   private fillEjecucion() {
-    //Si el tamaño de la cola de bloqueados es igual a 4
-    if (this.bloqueadoService.BloqueadoProcessList.length === 4) {
-      // Tomamos el siguiente elemento desde ahí
-      this.ejecucionService.EjecucionProcess = this.shiftProcessList(this.bloqueadoService.BloqueadoProcessList);
+    const group = this.listosService.ListosProcessList.shift()
+    if (group) {
+      this.ejecucionService.EjecucionProcess = group
     } else {
-      //Si no, tomamos el elemento de la categoría listo.
-      this.ejecucionService.EjecucionProcess = this.shiftProcessList(this.listosService.ListosProcessList);
-      this.fillListos()
+      this.ejecucionService.EjecucionProcess = new Process()
+      this.terminadoService.isProgramTerminated = true
     }
   }
 
   fillListos() {
-    while (this.listosService.ListosProcessList.length != 4) {
-      let process = this.shiftProcessList(this.ProcessList);
-      this.listosService.ListosProcessList.push(process)
+    this.addProcessToReadyList(this.nuevosService.NuevosProcessList);
+    this.addProcessToReadyList(this.bloqueadoService.BloqueadoProcessList);
+  }
+  private addProcessToReadyList(sourceList: Process[]): void {
+    while (sourceList.length > 0 && this.listosService.ListosProcessList.length < 5) {
+      const processToAdd: Process = sourceList[0];
+      if (processToAdd) {
+        this.listosService.ListosProcessList.push(processToAdd);
+        sourceList.shift();
+      }
     }
   }
-
-  private shiftProcessList(processes: Process[]) {
-    let process: Process = new Process()
-    const group = processes.shift()
-    if (group) {
-      process = group
-    }
-    return process;
-  }
-
   isProcessInEjecucionDone() {
-    return this.ejecucionService.EjecucionProcess.TiempoRestantePorEjecutar.toString() === "00:00"
+    return this.ejecucionService.EjecucionProcess.TiempoRestantePorEjecutar.seconds < 0
   }
 
+  listsStatus = this.nuevosService.NuevosProcessList.length == 0 &&
+    this.listosService.isListosEmty() &&
+    this.bloqueadoService.BloqueadoProcessList.length == 0;
 
   isProgramFinish(): boolean {
-    return this.nuevosService.NuevosProcessList.length == 0 &&
-      this.listosService.isListosEmty() &&
-      this.bloqueadoService.BloqueadoProcessList.length == 0
+    return this.listsStatus || this.ejecucionService.EjecucionProcess.Result == ""
   }
 
   clearEjecucion() {
     this.terminadoService.TerminadoProcessList.push(this.ejecucionService.EjecucionProcess)
     this.terminadoService.isProgramTerminated = this.isProgramFinish()
+    this.fillListos()
     this.fillEjecucion()
+  }
+
+
+  Interrupcion() {
+    this.bloqueadoService.isBloqueadoListFull = this.bloqueadoService.BloqueadoProcessList.length === 4
+    this.bloqueadoService.BloqueadoProcessList.push(this.ejecucionService.EjecucionProcess)
+    this.fillListos()
+    this.fillEjecucion()
+  }
+
+  Error() {
+    this.ejecucionService.EjecucionProcess.Result = "Error"
+    this.terminadoService.TerminadoProcessList.push(this.ejecucionService.EjecucionProcess)
+    this.fillListos()
+    this.fillEjecucion()
+  }
+
+  private incrementBloqueados() {
+    this.bloqueadoService.incrementBloqueado()
   }
 }

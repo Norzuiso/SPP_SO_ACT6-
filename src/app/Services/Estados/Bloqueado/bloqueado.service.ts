@@ -8,4 +8,11 @@ export class BloqueadoService {
   isBloqueadoListFull = false
   BloqueadoProcessList: Process[] = []
   constructor() { }
+
+  incrementBloqueado() {
+    this.BloqueadoProcessList.forEach(value => {
+      value.incrementTiempoTranscurridoBloqueado()
+      value.incrementTiempoTranscurrido()
+    })
+  }
 }

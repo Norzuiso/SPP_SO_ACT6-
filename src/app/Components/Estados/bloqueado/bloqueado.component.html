@@ -6,13 +6,13 @@
   <thead>
   <tr>
     <th scope="col">ID</th>
-    <th scope="col">T.Trans. Bloqueado</th>
+    <th scope="col">T.Trans.Bloqueado</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let process of this.bloqueadoService.BloqueadoProcessList">
     <td>{{ process.ID }}</td>
-    <td>{{ process.TiempoTranscurridoBloqueado }}</td>
+    <td>{{ process.TiempoTranscurridoBloqueado}}</td>
   </tr>
   </tbody>
 </table>
