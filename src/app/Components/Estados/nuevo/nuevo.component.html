@@ -1,1 +1,18 @@
-<p>nuevo works!</p>
+<div class="container-fluid">
+
+</div>
+<h5>Procesos Nuevos</h5>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">T.M</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let process of this.nuevoService.NuevosProcessList">
+    <td>{{ process.ID }}</td>
+    <td>{{ process.TiempoMaxEstimado }}</td>
+  </tr>
+  </tbody>
+</table>

@@ -4,15 +4,14 @@
       <h5>Número de trabajos</h5>
     </div>
     <div class="col-6">
-      <mat-form-field  class="w-100">
-        <mat-label>N. Trabajos</mat-label>
+      <mat-form-field  class="w-100 pt-3">
         <input matInput
                type="number"
-               formControlName="jobsQuantityFormControl">
+               formControlName="processQuantityFormControl">
       </mat-form-field>
     </div>
     <div class="col-3">
-      <button (click)="generateJobs()" class="btn btn-outline-dark ">Generar</button>
+      <button (click)="generateJobs()" class="btn btn-outline-dark" type="button" >Generar</button>
     </div>
   </div>
 </form>

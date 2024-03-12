@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-listos',
-  standalone: true,
-  imports: [],
   templateUrl: './listos.component.html',
   styleUrl: './listos.component.css'
 })
