@@ -20,6 +20,7 @@ import {ListosComponent} from "./Estados/listos/listos.component";
 import {EjecucionComponent} from "./Estados/ejecucion/ejecucion.component";
 import {BloqueadoComponent} from "./Estados/bloqueado/bloqueado.component";
 import {InstruccionesComponent} from "./Instrucctions/instrucciones/instrucciones.component";
+import {TimerComponent} from "./Estados/timer/timer.component";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {InstruccionesComponent} from "./Instrucctions/instrucciones/instruccione
     BloqueadoComponent,
     StatesManagerComponent,
     GeneralComponent,
-    NumOfProcessComponent
+    NumOfProcessComponent,
+    TimerComponent
   ],
   exports: [
     StatesManagerComponent,
@@ -43,7 +45,8 @@ import {InstruccionesComponent} from "./Instrucctions/instrucciones/instruccione
     EjecucionComponent,
     BloqueadoComponent,
     InstruccionesComponent,
-    NumOfProcessComponent
+    NumOfProcessComponent,
+    TimerComponent
   ],
   imports: [
     CommonModule,

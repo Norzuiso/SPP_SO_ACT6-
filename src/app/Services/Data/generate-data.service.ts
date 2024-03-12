@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Process} from "../../Classes/Process";
 import {generateEstimatedTime, generateProcessFullOperation} from "../../utils/ProcessGenerationUtils";
+import {restTime} from "../../utils/TimeOperations";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class GenerateDataService {
       fullOperation = generateProcessFullOperation()
       tempProcess.Operation = fullOperation?.ope
       tempProcess.Result = fullOperation?.result
+      tempProcess.TiempoRestantePorEjecutar = restTime(tempProcess.TiempoMaxEstimado, tempProcess.TiempoServicio)
 
       this.ProcessList.push(tempProcess)
       tempProcess = new Process()

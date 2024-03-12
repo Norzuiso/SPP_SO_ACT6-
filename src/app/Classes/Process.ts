@@ -31,5 +31,5 @@ export class Process {
   // Si no será TiempoTrans
   TiempoServicio: ProcessTime = new ProcessTime(0, 0)
 
-  TiempoRestantePorEjecutar: ProcessTime = restTime(this.TiempoMaxEstimado, this.TiempoServicio)
+  TiempoRestantePorEjecutar: ProcessTime = new ProcessTime(0, 0)
 }
