@@ -1,1 +1,21 @@
-<p>listos works!</p>
+<div class="container-fluid">
+
+</div>
+<h5>Procesos Nuevos</h5>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">T.Maximo</th>
+    <th scope="col">T.transcurrido</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let process of this.listosService.ListosProcessList">
+    <td>{{ process.ID }}</td>
+    <td>{{ process.TiempoMaxEstimado }}</td>
+    <td>{{ process.TiempoTranscurrido }}</td>
+  </tr>
+  </tbody>
+</table>

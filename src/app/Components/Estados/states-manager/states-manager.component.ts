@@ -4,6 +4,7 @@ import {AppModule} from "../../app.module";
 import {GenerateDataService} from "../../../Services/Data/generate-data.service";
 import {NuevosService} from "../../../Services/Estados/Nuevo/nuevos.service";
 import {Process} from "../../../Classes/Process";
+import {StateManagerService} from "../../../Services/Estados/StateManager/state-manager.service";
 
 @Component({
   selector: 'app-states-manager',
@@ -14,11 +15,9 @@ export class StatesManagerComponent {
   ProcessList: Process[] = []
 
   constructor(
-    protected generateDataService: GenerateDataService,
-    protected nuevosService: NuevosService
+    protected stateManagerService: StateManagerService
   ) {
-    this.ProcessList = this.generateDataService.ProcessList
-    this.nuevosService.NuevosProcessList = this.ProcessList
+    this.ProcessList = stateManagerService.ProcessList
 
   }
 
