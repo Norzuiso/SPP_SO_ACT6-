@@ -23,6 +23,9 @@ export class Process {
   // Tiempo que el proceso ha estado esperando para usar el procesador
   TiempoEspera: ProcessTime = new ProcessTime(0, 0)
 
+  // Tiempo transcurrido en cola de bloqueado
+  TiempoTranscurridoBloqueado: ProcessTime = new ProcessTime(0, 0)
+
   // Tiempo que el proceso ha estado dentro de ejecución.
   // Si termina bien entonces es TiempoMaxEstimado
   // Si no será TiempoTrans

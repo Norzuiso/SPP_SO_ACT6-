@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {NuevoComponent} from "./Estados/nuevo/nuevo.component";
 import {StatesManagerComponent} from "./Estados/states-manager/states-manager.component";
 import {GeneralComponent} from "./general/general.component";
@@ -19,6 +19,7 @@ import {ListosService} from "../Services/Estados/Listos/listos.service";
 import {ListosComponent} from "./Estados/listos/listos.component";
 import {EjecucionComponent} from "./Estados/ejecucion/ejecucion.component";
 import {BloqueadoComponent} from "./Estados/bloqueado/bloqueado.component";
+import {InstruccionesComponent} from "./Instrucctions/instrucciones/instrucciones.component";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {BloqueadoComponent} from "./Estados/bloqueado/bloqueado.component";
     NuevoComponent,
     TerminadoComponent,
     ListosComponent,
+    InstruccionesComponent,
     EjecucionComponent,
     BloqueadoComponent,
     StatesManagerComponent,
@@ -40,6 +42,7 @@ import {BloqueadoComponent} from "./Estados/bloqueado/bloqueado.component";
     ListosComponent,
     EjecucionComponent,
     BloqueadoComponent,
+    InstruccionesComponent,
     NumOfProcessComponent
   ],
   imports: [
@@ -54,4 +57,5 @@ import {BloqueadoComponent} from "./Estados/bloqueado/bloqueado.component";
     MatIconModule
   ]
 })
-export class AppModule { }
+export class AppModule {
+}

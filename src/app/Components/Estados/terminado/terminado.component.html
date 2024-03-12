@@ -1,1 +1,57 @@
-<p>terminado works!</p>
+<h5>Procesos Terminados</h5>
+<div *ngIf="!this.terminadoService.isProgramTerminated">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Resultado</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let process of this.terminadoService.TerminadoProcessList">
+      <td>{{ process.ID }}</td>
+      <td>{{ process.Operation }}</td>
+      <td>{{ process.Result }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="this.terminadoService.isProgramTerminated">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Resultado</th>
+
+      <th scope="col">Tiempo de Llegada</th>
+      <th scope="col">Tiempo de Finalización</th>
+      <th scope="col">Tiempo de Retorno</th>
+      <th scope="col">Tiempo de Respuesta</th>
+      <th scope="col">Tiempo de Espera</th>
+      <th scope="col">Tiempo de Servicio</th>
+      <th scope="col">Tiempo transcurrido</th>
+      <th scope="col">Tiempo transucrrido en bloqueados</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let process of this.terminadoService.TerminadoProcessList">
+      <td>{{ process.ID }}</td>
+      <td>{{ process.Operation }}</td>
+      <td>{{ process.Result }}</td>
+      //Tiempos
+      <td>{{ process.TiempoLlegada }}</td>
+      <td>{{ process.TiempoFinalizacion }}</td>
+      <td>{{ process.TiempoRetorno }}</td>
+      <td>{{ process.TiempoRespuesta }}</td>
+      <td>{{ process.TiempoEspera }}</td>
+      <td>{{ process.TiempoServicio }}</td>
+      <td>{{ process.TiempoTranscurrido }}</td>
+      <td>{{ process.TiempoTranscurridoBloqueado }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,1 +1,20 @@
-<p>ejecucion works!</p>
+<div class="container-fluid">
+  <div class="mx-auto">
+    <span class="h4">Proceso en Ejecución</span>
+    <p class="h5 border-bottom">
+      Número de programa: {{ this.ejecucionService.EjecucionProcess.ID }}
+    </p>
+    <p class="h6 border-bottom">
+      Operación: {{ this.ejecucionService.EjecucionProcess.Operation }}
+    </p>
+    <p class="h6 border-bottom">
+      Tiempo máximo estimado: {{ this.ejecucionService.EjecucionProcess.TiempoMaxEstimado }}
+    </p>
+    <p class="h6 border-bottom">
+      Tiempo transcurrido: {{ this.ejecucionService.EjecucionProcess.TiempoTranscurrido }}
+    </p>
+    <p class="h6 border-bottom">
+      Tiempo restante por ejecutar: {{ this.ejecucionService.EjecucionProcess.TiempoRestantePorEjecutar }}
+    </p>
+  </div>
+</div>

@@ -1,1 +1,18 @@
-<p>bloqueado works!</p>
+<div class="container-fluid">
+<p *ngIf="bloqueadoService.isBloqueadoListFull">La cola de bloqueados se encuentra llena</p>
+</div>
+<h5>Procesos Bloqueados</h5>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">T.Trans. Bloqueado</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let process of this.bloqueadoService.BloqueadoProcessList">
+    <td>{{ process.ID }}</td>
+    <td>{{ process.TiempoTranscurridoBloqueado }}</td>
+  </tr>
+  </tbody>
+</table>

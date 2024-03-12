@@ -1,8 +1,29 @@
-<div class="row">
-  <div class="col-2">
-    <app-nuevo></app-nuevo>
+<div class="container-fluid" *ngIf="!this.terminadoService.isProgramTerminated">
+  <div class="row border">
+    <div class="col-3 border">
+      <app-nuevo></app-nuevo>
+    </div>
+    <div class="col-3 border">
+      <app-listos></app-listos>
+    </div>
+    <div class="col-6 border">
+      <app-ejecucion></app-ejecucion>
+    </div>
   </div>
-  <div class="col-2">
-    <app-listos></app-listos>
+  <div class="row border">
+    <div class="col-3 border">
+      <app-instrucciones></app-instrucciones>
+    </div>
+    <div class="col-3 border">
+      <app-bloqueado></app-bloqueado>
+    </div>
+    <div class="col-6 border">
+      <app-terminado></app-terminado>
+    </div>
   </div>
+</div>
+
+<div class="container-fluid" *ngIf="this.terminadoService.isProgramTerminated">
+  <app-terminado></app-terminado>
+
 </div>
