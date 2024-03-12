@@ -1,1 +1,19 @@
-<p>num-of-process works!</p>
+<form [formGroup]="formGroup">
+  <div class="row pt-5">
+    <div class="col-3">
+      <h5>Número de trabajos</h5>
+    </div>
+    <div class="col-6">
+      <mat-form-field  class="w-100">
+        <mat-label>N. Trabajos</mat-label>
+        <input matInput
+               type="number"
+               formControlName="jobsQuantityFormControl">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <button (click)="generateJobs()" class="btn btn-outline-dark ">Generar</button>
+    </div>
+  </div>
+</form>
+
