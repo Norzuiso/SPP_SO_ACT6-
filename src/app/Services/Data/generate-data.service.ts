@@ -7,6 +7,7 @@ import {generateEstimatedTime, generateProcessFullOperation} from "../../utils/P
 })
 export class GenerateDataService {
   ProcessList: Process[] = []
+  isProcessListGenerated = true
 
   generateProcess(quantity: number) {
     let tempProcess = new Process()
@@ -23,6 +24,7 @@ export class GenerateDataService {
       this.ProcessList.push(tempProcess)
       tempProcess = new Process()
     }
+    this.isProcessListGenerated = true
   }
 
 
