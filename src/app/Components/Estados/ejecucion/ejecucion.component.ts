@@ -1,6 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {EjecucionService} from "../../../Services/Estados/Ejecucion/ejecucion.service";
 import {TimerService} from "../../../Services/Timer/timer.service";
+import {StateManagerService} from "../../../Services/Estados/StateManager/state-manager.service";
 
 @Component({
   selector: 'app-ejecucion',
@@ -11,7 +12,7 @@ export class EjecucionComponent {
   // Espacio de memoria de 4 procesos
 
   constructor(protected ejecucionService: EjecucionService,
-              public timerService: TimerService) {
+              public timerService: StateManagerService) {
   }
   @HostListener('document:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent): void {

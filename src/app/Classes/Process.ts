@@ -11,6 +11,7 @@ export class Process {
 
   // Hora en el que el proceso llego al sistema
   TiempoLlegada: ProcessTime = new ProcessTime(0, 0)
+  isLlegada: boolean = false
 
   // Hora en la que el proceso termino
   TiempoFinalizacion: ProcessTime = new ProcessTime(0, 0)
@@ -18,7 +19,7 @@ export class Process {
   // Tiempo total desde que el proceso llega hasta que termina
   TiempoRetorno: ProcessTime = new ProcessTime(0, 0)
   incrementTiempoRetorno() {
-      this.TiempoRespuesta = increment(this.TiempoRetorno)
+      this.TiempoRetorno = increment(this.TiempoRetorno)
 
   }
   // Tiempo transcurrido desde que llega hasta que es atendido por primera vez
