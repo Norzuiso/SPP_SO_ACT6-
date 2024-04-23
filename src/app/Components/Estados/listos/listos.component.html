@@ -15,7 +15,7 @@
   <tr *ngFor="let process of this.generalService.processResult.procesosEspera">
     <td>{{ process.id }}</td>
     <td>{{ timeToString(process.tiempoMaxEstimado) }}</td>
-    <td>{{ timeToString(process.tiempoTranscurrido) }}</td>
+    <td>{{ timeToString(process.tiempoEspera) }}</td>
   </tr>
   </tbody>
 </table>
