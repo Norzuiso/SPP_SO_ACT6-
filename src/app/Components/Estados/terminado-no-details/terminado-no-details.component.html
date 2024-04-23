@@ -1,0 +1,18 @@
+<h5>Procesos Terminados</h5>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Resultado</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let process of this.generalService.processResult.procesoTerminado">
+      <td>{{ process.id }}</td>
+      <td>{{ process.operation }}</td>
+      <td>{{ process.result }}</td>
+    </tr>
+    </tbody>
+  </table>
