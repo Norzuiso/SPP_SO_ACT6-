@@ -2,11 +2,11 @@ import {ProcessTime} from "../ProcessTime";
 
 export class Proceso {
   id = "";
-  pperation = "";
+  operation = "";
   result = "";
   llegada = false;
   tiempoMaxEstimado = new ProcessTime();
-  tiempotranscurrido = new ProcessTime();
+  tiempoTranscurrido = new ProcessTime();
   tiempoLlegada = new ProcessTime();
   tiempoFinalizacion = new ProcessTime();
   tiempoRetorno = new ProcessTime();

@@ -12,10 +12,10 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let process of this.listosService.ListosProcessList">
-    <td>{{ process.ID }}</td>
-    <td>{{ process.TiempoMaxEstimado }}</td>
-    <td>{{ process.TiempoTranscurrido }}</td>
+  <tr *ngFor="let process of this.generalService.processResult.procesosEspera">
+    <td>{{ process.id }}</td>
+    <td>{{ timeToString(process.tiempoMaxEstimado) }}</td>
+    <td>{{ timeToString(process.tiempoTranscurrido) }}</td>
   </tr>
   </tbody>
 </table>

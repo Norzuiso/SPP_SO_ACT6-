@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {ListosService} from "../../../Services/Estados/Listos/listos.service";
+import {GeneralService} from "../../../Services/peticiones/general.service";
+import {timeToString} from "../../../utils/TimeOperations";
 
 @Component({
   selector: 'app-listos',
@@ -10,6 +12,8 @@ export class ListosComponent {
 
   // Espacio de memoria de 4 procesos
 
-  constructor(protected listosService: ListosService) {
+  constructor(protected generalService: GeneralService) {
   }
+
+  protected readonly timeToString = timeToString;
 }

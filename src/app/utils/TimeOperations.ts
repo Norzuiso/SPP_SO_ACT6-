@@ -37,6 +37,19 @@ export function processSeconds(result: ProcessTime) {
   }
 }
 
+export function processTimeFromSeconds(seconds: number) {
+  let result = new ProcessTime()
+
+  if (seconds >= 60) {
+    const x = seconds
+    const resto = x % 60
+    const cociente = Math.floor(x / 60)
+    result.seconds = resto
+    result.minutes += cociente
+  }
+  return result
+}
+
 export function timeToString(processTime: ProcessTime): string {
   console.log(processTime)
   let timeStr: string = ""

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {BloqueadoService} from "../../../Services/Estados/Bloqueado/bloqueado.service";
+import {GeneralService} from "../../../Services/peticiones/general.service";
 
 @Component({
   selector: 'app-bloqueado',
@@ -11,7 +12,7 @@ export class BloqueadoComponent {
 
 
   constructor(
-    protected bloqueadoService: BloqueadoService
+    protected generalService: GeneralService
   ) {
   }
 }

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<p>Segundos para liberar: {{bloqueadoService.tiempoEspera}}</p>
+<p>Segundos para liberar: {{generalService.processResult.procesosBloqueados.tiempoEspera}}</p>
 </div>
 <h5>Procesos Bloqueados</h5>
 <table class="table">
@@ -10,9 +10,9 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let process of this.bloqueadoService.BloqueadoProcessList">
-    <td>{{ process.ID }}</td>
-    <td>{{ process.TiempoTranscurridoBloqueado}}</td>
+  <tr *ngFor="let process of generalService.processResult.procesosBloqueados.procesosBloqueados">
+    <td>{{ process.id }}</td>
+    <td>{{ process.tiempoBloqueado}}</td>
   </tr>
   </tbody>
 </table>

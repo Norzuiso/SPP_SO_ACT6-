@@ -23,6 +23,7 @@ import {InstruccionesComponent} from "./Instrucctions/instrucciones/instruccione
 import {TimerComponent} from "./Estados/timer/timer.component";
 import {HttpClientModule} from "@angular/common/http";
 import {GeneralService} from "../Services/peticiones/general.service";
+import {TerminadoNoDetailsComponent} from "./Estados/terminado-no-details/terminado-no-details.component";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {GeneralService} from "../Services/peticiones/general.service";
     StatesManagerComponent,
     GeneralComponent,
     NumOfProcessComponent,
-    TimerComponent
+    TimerComponent,
+    TerminadoNoDetailsComponent
   ],
   exports: [
     StatesManagerComponent,
@@ -48,7 +50,8 @@ import {GeneralService} from "../Services/peticiones/general.service";
     BloqueadoComponent,
     InstruccionesComponent,
     NumOfProcessComponent,
-    TimerComponent
+    TimerComponent,
+    TerminadoNoDetailsComponent
   ],
   imports: [
     HttpClientModule,

@@ -6,6 +6,7 @@ export class ProcessResult {
   contadorGlobal: number = 0
   processInMemory: number = 0
   procesosNuevos: Proceso[] = []
+  procesosEspera: Proceso[] = []
   procesosBloqueados = new ProcesosBloqueados();
   procesoEnEjecucion = new Proceso();
   procesoTerminado: Proceso[] = []

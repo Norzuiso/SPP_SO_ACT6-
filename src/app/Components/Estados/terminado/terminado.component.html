@@ -1,23 +1,5 @@
 <h5>Procesos Terminados</h5>
-<div *ngIf="!this.terminadoService.isProgramTerminated">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Operación</th>
-      <th scope="col">Resultado</th>
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let process of this.terminadoService.TerminadoProcessList">
-      <td>{{ process.ID }}</td>
-      <td>{{ process.Operation }}</td>
-      <td>{{ process.Result }}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
 <div *ngIf="this.terminadoService.isProgramTerminated">
   <table class="table">
     <thead>
