@@ -26,4 +26,12 @@ export class GeneralService {
   isProgramTerminated() {
     return this.processResult.processInMemory == 0;
   }
+
+  resolveProcess() {
+    const url = `${this.apiUrl}result`;
+    const req = this.http.post<any>(url, this.processResult);
+    req.subscribe(data => {
+      this.processResult = data;
+    })
+  }
 }

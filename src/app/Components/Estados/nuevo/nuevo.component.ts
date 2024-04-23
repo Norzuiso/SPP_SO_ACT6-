@@ -13,19 +13,10 @@ import {timeToString} from "../../../utils/TimeOperations";
   styleUrl: './nuevo.component.css'
 })
 export class NuevoComponent {
-  NuevosProcessList: Proceso[] = [];
 
 
   constructor(public generalService: GeneralService) {
   }
 
   protected readonly timeToString = timeToString;
-
-  ngOnInit() {
-    this.NuevosProcessList = this.generalService.processResult.procesosNuevos
-  }
-  printProceso(proceso: Proceso) {
-    console.log(proceso)
-    return "";
-  }
 }

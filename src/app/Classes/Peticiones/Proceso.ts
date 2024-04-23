@@ -11,6 +11,7 @@ export class Proceso {
   tiempoFinalizacion = new ProcessTime();
   tiempoRetorno = new ProcessTime();
   tiempoRespuesta = new ProcessTime();
+  tiempoEspera: ProcessTime = new ProcessTime();
   tiempoBloqueado = new ProcessTime();
   tiempoServicio = new ProcessTime();
   tiempoRestantePorEjecutar = new ProcessTime();

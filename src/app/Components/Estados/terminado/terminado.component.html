@@ -1,41 +1,60 @@
 <h5>Procesos Terminados</h5>
 
-<div *ngIf="this.terminadoService.isProgramTerminated">
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Operación</th>
+    <th scope="col">Resultado</th>
+
+    <th scope="col">Tiempo de Llegada</th>
+    <th scope="col">Tiempo de Finalización</th>
+    <th scope="col">Tiempo de Retorno</th>
+    <th scope="col">Tiempo de Respuesta</th>
+    <th scope="col">Tiempo de Espera</th>
+    <th scope="col">Tiempo de Servicio</th>
+    <th scope="col">Tiempo maximo Estimado</th>
+    <th scope="col">Tiempo transcurrido</th>
+    <th scope="col">Tiempo transcurrido en bloqueados</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let process of this.generalService.processResult.procesoTerminado">
+    <td>{{ process.id }}</td>
+    <td>{{ process.operation }}</td>
+    <td>{{ process.result }}</td>
+    <!--Tiempos-->
+    <td>{{ timeToString(process.tiempoLlegada) }}</td>
+    <td>{{ timeToString(process.tiempoFinalizacion) }}</td>
+    <td>{{ timeToString(process.tiempoRetorno) }}</td>
+    <td>{{ timeToString(process.tiempoRespuesta) }}</td>
+    <td>{{ timeToString(process.tiempoEspera) }}</td>
+    <td>{{ timeToString(process.tiempoServicio) }}</td>
+    <td>{{ timeToString(process.tiempoMaxEstimado) }}</td>
+    <td>{{ timeToString(process.tiempoTranscurrido) }}</td>
+    <td>{{ timeToString(process.tiempoBloqueado) }}</td>
+  </tr>
+  </tbody>
+</table>
+<hr>
+<div>
   <table class="table">
     <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Operación</th>
-      <th scope="col">Resultado</th>
+      <th scope="col"></th>
+      <th scope="col">resultados</th>
 
-      <th scope="col">Tiempo de Llegada</th>
-      <th scope="col">Tiempo de Finalización</th>
+      <th scope="col"> </th>
+      <th scope="col"> </th>
       <th scope="col">Tiempo de Retorno</th>
       <th scope="col">Tiempo de Respuesta</th>
       <th scope="col">Tiempo de Espera</th>
-      <th scope="col">Tiempo de Servicio</th>
+      <th scope="col">{{calculateTiempoServicio()}}</th>
       <th scope="col">Tiempo maximo Estimado</th>
-      <th scope="col">Tiempo transcurrido</th>
-      <th scope="col">Tiempo transcurrido en bloqueados</th>
+      <th scope="col">{{calculateTiempoTotalTrans()}}</th>
+      <th scope="col"> </th>
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let process of this.terminadoService.TerminadoProcessList">
-      <td>{{ process.ID }}</td>
-      <td>{{ process.Operation }}</td>
-      <td>{{ process.Result }}</td>
-      <!--Tiempos-->
-      <td>{{ process.TiempoLlegada }}</td>
-      <td>{{ process.TiempoFinalizacion }}</td>
-      <td>{{ process.TiempoRetorno }}</td>
-      <td>{{ process.TiempoRespuesta }}</td>
-      <td>{{ process.TiempoEspera }}</td>
-      <td>{{ process.TiempoServicio }}</td>
-      <td>{{ process.TiempoMaxEstimado }}</td>
-      <td>{{ process.TiempoTranscurrido }}</td>
-      <td>{{ process.TiempoTranscurridoBloqueado }}</td>
-
-    </tr>
-    </tbody>
   </table>
 </div>
+
