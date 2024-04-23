@@ -1,10 +1,9 @@
 
 <div class="container-fluid">
   <app-timer></app-timer>
-
 </div>
 
-<div class="container-fluid" *ngIf="!this.terminadoService.isProgramTerminated">
+<div class="container-fluid" *ngIf="this.generalService.isProgramTerminated()">
   <div class="row border">
     <div class="col-3 border">
       <app-nuevo></app-nuevo>
@@ -29,7 +28,7 @@
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="this.terminadoService.isProgramTerminated">
+<div class="container-fluid" *ngIf="!this.generalService.isProgramTerminated()">
   <app-terminado></app-terminado>
 
 </div>

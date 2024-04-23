@@ -6,6 +6,7 @@ import {NuevosService} from "../../../Services/Estados/Nuevo/nuevos.service";
 import {Process} from "../../../Classes/Process";
 import {StateManagerService} from "../../../Services/Estados/StateManager/state-manager.service";
 import {TerminadoService} from "../../../Services/Estados/Terminado/terminado.service";
+import {GeneralService} from "../../../Services/peticiones/general.service";
 
 @Component({
   selector: 'app-states-manager',
@@ -13,14 +14,13 @@ import {TerminadoService} from "../../../Services/Estados/Terminado/terminado.se
   styleUrl: './states-manager.component.css'
 })
 export class StatesManagerComponent {
-  ProcessList: Process[] = []
 
   constructor(
-    protected stateManagerService: StateManagerService,
-    protected terminadoService: TerminadoService
+    public generalService: GeneralService
   ) {
-    this.ProcessList = stateManagerService.ProcessList
-
   }
 
+  isProgramTerminated() {
+
+  }
 }

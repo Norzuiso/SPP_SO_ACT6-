@@ -16,6 +16,7 @@ import {restTime} from "../../../utils/TimeOperations";
 })
 export class StateManagerService {
   ProcessList: Process[] = []
+  procesosEnMemoria = 0;
 
   constructor(
     protected generateDataService: GenerateDataService,
@@ -42,8 +43,8 @@ export class StateManagerService {
 
 
   incrementTimes() {
+    this.incrementBloqueados();
     this.incrementEjecucion();
-    this.incrementBloqueados()
   }
 
   private incrementEjecucion() {
@@ -63,11 +64,11 @@ export class StateManagerService {
   private fillEjecucion() {
     const group = this.listosService.ListosProcessList.shift()
     if (group) {
-      if (group.isWaitingAtendido){
+      if (group.isWaitingAtendido) {
         group.isWaitingAtendido = false
         group.TiempoRespuesta = this.timerService.getTiempo()
       }
-        this.ejecucionService.EjecucionProcess = group
+      this.ejecucionService.EjecucionProcess = group
     } else {
       this.ejecucionService.EjecucionProcess = new Process()
       this.terminadoService.isProgramTerminated = true
@@ -75,27 +76,36 @@ export class StateManagerService {
   }
 
   fillListos() {
-    if (this.bloqueadoService.BloqueadoProcessList.length==5){
-      this.addProcessToReadyList(this.bloqueadoService.BloqueadoProcessList);
-    }else{
+    if (this.procesosEnMemoria < 4 && !this.bloqueadoService.isFreeToRemove()) {
+      //Agregamos un proceso de la lista de nuevos
       this.addProcessToReadyList(this.nuevosService.NuevosProcessList);
+    } else if (this.bloqueadoService.isFreeToRemove()) {
+      // Agregamos un proceso de la lista de bloqueados
+      this.addProcessToReadyList(this.bloqueadoService.BloqueadoProcessList);
     }
-    this.addProcessToReadyList(this.bloqueadoService.BloqueadoProcessList);
   }
+
   private addProcessToReadyList(sourceList: Process[]): void {
-    while (sourceList.length > 0 && this.listosService.ListosProcessList.length < 5) {
+    while (this.procesosEnMemoria < 4 || this.bloqueadoService.isFreeToRemove()) {
       const processToAdd: Process = sourceList[0];
       if (processToAdd) {
         // Aquí se agrega el tiempo de llegada
-        if (!processToAdd.isLlegada){
+        if (!processToAdd.isLlegada) {
           processToAdd.TiempoLlegada = this.timerService.getTiempo()
+          processToAdd.TiempoLlegada.seconds++
           processToAdd.isLlegada = true
         }
         this.listosService.ListosProcessList.push(processToAdd);
         sourceList.shift();
       }
+      if (this.bloqueadoService.isFreeToRemove()) {
+        this.bloqueadoService.tiempoEspera = 0;
+        break;
+      }
+      this.procesosEnMemoria++;
     }
   }
+
   isProcessInEjecucionDone() {
     return this.ejecucionService.EjecucionProcess.TiempoRestantePorEjecutar.seconds < 0
   }
@@ -110,16 +120,17 @@ export class StateManagerService {
 
   clearEjecucion() {
     this.ejecucionService.EjecucionProcess.TiempoFinalizacion = this.timerService.getTiempo()
+    this.ejecucionService.EjecucionProcess.TiempoFinalizacion.seconds++
     this.ejecucionService.calculateTimes()
     this.terminadoService.TerminadoProcessList.push(this.ejecucionService.EjecucionProcess)
     this.terminadoService.isProgramTerminated = this.isProgramFinish()
+    this.procesosEnMemoria--
     this.fillListos()
     this.fillEjecucion()
   }
 
 
   Interrupcion() {
-    this.bloqueadoService.isBloqueadoListFull = this.bloqueadoService.BloqueadoProcessList.length === 4
     this.bloqueadoService.BloqueadoProcessList.push(this.ejecucionService.EjecucionProcess)
     this.fillListos()
     this.fillEjecucion()
@@ -131,9 +142,15 @@ export class StateManagerService {
   }
 
   private incrementBloqueados() {
+    this.bloqueadoService.incrementTiempoEsperaBloqueado()
+    if (this.bloqueadoService.isFreeToRemove()) {
+      this.fillListos();
+    }
     this.bloqueadoService.incrementBloqueado()
   }
+
   keyStatus = 'C'
+
   // Método para manejar el evento de tecla presionada
   public handleKeyDown(key: string): void {
     console.log("Se apachurro" + key)

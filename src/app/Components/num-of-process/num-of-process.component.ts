@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {GenerateDataService} from "../../Services/Data/generate-data.service";
+import {GeneralService} from "../../Services/peticiones/general.service";
 
 @Component({
   selector: 'app-num-of-process',
@@ -8,7 +9,7 @@ import {GenerateDataService} from "../../Services/Data/generate-data.service";
   styleUrl: './num-of-process.component.css'
 })
 export class NumOfProcessComponent {
-  constructor(private generateData: GenerateDataService) {
+  constructor(private generateData: GeneralService) {
   }
 
   private processQuantity: number = 1;

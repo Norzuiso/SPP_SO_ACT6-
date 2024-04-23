@@ -21,6 +21,8 @@ import {EjecucionComponent} from "./Estados/ejecucion/ejecucion.component";
 import {BloqueadoComponent} from "./Estados/bloqueado/bloqueado.component";
 import {InstruccionesComponent} from "./Instrucctions/instrucciones/instrucciones.component";
 import {TimerComponent} from "./Estados/timer/timer.component";
+import {HttpClientModule} from "@angular/common/http";
+import {GeneralService} from "../Services/peticiones/general.service";
 
 
 @NgModule({
@@ -49,6 +51,7 @@ import {TimerComponent} from "./Estados/timer/timer.component";
     TimerComponent
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
     MatButtonModule,
     NgbModule,
@@ -58,7 +61,9 @@ import {TimerComponent} from "./Estados/timer/timer.component";
     FormsModule,
     MatFormFieldModule,
     MatIconModule
-  ]
+  ],
+  providers: [GeneralService]
+
 })
 export class AppModule {
 }

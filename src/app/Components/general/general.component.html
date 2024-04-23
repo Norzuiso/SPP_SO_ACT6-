@@ -1,6 +1,6 @@
 <div class="container mt-3">
 
-  <app-num-of-process *ngIf="!this.generateDataService.isProcessListGenerated"></app-num-of-process>
-  <app-states-manager *ngIf="this.generateDataService.isProcessListGenerated"></app-states-manager>
+  <app-num-of-process *ngIf="!this.generalService.canWeStart"></app-num-of-process>
+  <app-states-manager *ngIf="this.generalService.canWeStart"></app-states-manager>
 
 </div>

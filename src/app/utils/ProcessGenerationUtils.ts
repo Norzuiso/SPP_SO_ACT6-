@@ -28,5 +28,5 @@ export function generateRandomInt(min: number, max: number) {
 
 export function generateEstimatedTime(): ProcessTime {
   let seconds = generateRandomInt(5, 19);
-  return new ProcessTime(0, seconds);
+  return new ProcessTime();
 }

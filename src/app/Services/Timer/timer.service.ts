@@ -21,7 +21,7 @@ export class TimerService {
     this.tiempoObservable = this.tiempoSubject.asObservable();
   }
   getTiempo(): ProcessTime {
-    return new ProcessTime(this.minutos, this.segundos);
+    return new ProcessTime();
   }
 
   reiniciarTiempo() {

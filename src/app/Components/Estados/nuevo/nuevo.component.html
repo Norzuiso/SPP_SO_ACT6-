@@ -10,9 +10,9 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let process of this.nuevoService.NuevosProcessList">
-    <td>{{ process.ID }}</td>
-    <td>{{ process.TiempoMaxEstimado }}</td>
+  <tr *ngFor="let proceso of this.NuevosProcessList">
+    <td>{{ proceso.id }}</td>
+    <td>{{ timeToString(proceso.tiempoMaxEstimado)}}</td>
   </tr>
   </tbody>
 </table>
