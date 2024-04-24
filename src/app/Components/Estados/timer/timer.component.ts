@@ -14,6 +14,8 @@ export class TimerComponent {
   constructor(protected generalService: GeneralService) {
   }
 
-  protected readonly timeToString = timeToString;
-  protected readonly processTimeFromSeconds = processTimeFromSeconds;
+  getContadorGlobalFormat() {
+    const processTime = processTimeFromSeconds(this.generalService.processResult.contadorGlobal);
+    return timeToString(processTime);
+  }
 }
