@@ -16,5 +16,5 @@ import {GeneralService} from "./Services/peticiones/general.service";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Act6';
+  title = 'Act8 - FCFS continuación';
 }
