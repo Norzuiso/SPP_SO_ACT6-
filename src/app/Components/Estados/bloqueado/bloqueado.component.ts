@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {BloqueadoService} from "../../../Services/Estados/Bloqueado/bloqueado.service";
 import {GeneralService} from "../../../Services/peticiones/general.service";
+import {timeToString} from "../../../utils/TimeOperations";
 
 @Component({
   selector: 'app-bloqueado',
@@ -15,4 +16,6 @@ export class BloqueadoComponent {
     protected generalService: GeneralService
   ) {
   }
+
+  protected readonly timeToString = timeToString;
 }

@@ -9,6 +9,7 @@ export class GeneralService {
   private apiUrl = 'http://localhost:8080/';
   public processResult: ProcessResult = new ProcessResult()
   public canWeStart: boolean = false;
+  public  isProgramTerminated : boolean = false;
 
   constructor(private http: HttpClient) {
   }
@@ -23,15 +24,14 @@ export class GeneralService {
   }
 
 
-  isProgramTerminated() {
-    return this.processResult.processInMemory == 0;
-  }
-
   resolveProcess() {
     const url = `${this.apiUrl}result`;
     const req = this.http.post<any>(url, this.processResult);
     req.subscribe(data => {
       this.processResult = data;
+      this.isProgramTerminated = this.processResult.procesosEspera.length == 0
+        && this.processResult.procesosBloqueados.procesosBloqueados.length == 0
+        && this.processResult.procesoEnEjecucion.id == ""
     })
   }
 }

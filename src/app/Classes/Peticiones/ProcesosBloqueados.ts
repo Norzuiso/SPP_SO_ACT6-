@@ -1,7 +1,7 @@
 import {Proceso} from "./Proceso";
 
 export class ProcesosBloqueados {
-  tiempoEspera = 0;
+  tiempoParaSalirNuevo = 0;
   procesosBloqueados: Proceso[] = [];
   tenemosBloqueados = this.procesosBloqueados.length != 0;
 

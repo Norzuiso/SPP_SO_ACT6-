@@ -1,13 +1,6 @@
-import {Component} from '@angular/core';
-import {NuevoComponent} from "../nuevo/nuevo.component";
-import {AppModule} from "../../app.module";
-import {GenerateDataService} from "../../../Services/Data/generate-data.service";
-import {NuevosService} from "../../../Services/Estados/Nuevo/nuevos.service";
-import {Process} from "../../../Classes/Process";
-import {StateManagerService} from "../../../Services/Estados/StateManager/state-manager.service";
-import {TerminadoService} from "../../../Services/Estados/Terminado/terminado.service";
+import {Component, HostListener} from '@angular/core';
 import {GeneralService} from "../../../Services/peticiones/general.service";
-import {interval, Subscription, takeUntil, tap} from "rxjs";
+import {interval} from "rxjs";
 
 @Component({
   selector: 'app-states-manager',
@@ -15,38 +8,42 @@ import {interval, Subscription, takeUntil, tap} from "rxjs";
   styleUrl: './states-manager.component.css'
 })
 export class StatesManagerComponent {
-  subscription: Subscription;
   intervalId: any; // Almacena el identificador del intervalo
 
-  constructor(
-    public generalService: GeneralService
-  ) {
+  constructor(public generalService: GeneralService) {
   }
 
+  // Método para detectar las teclas presionadas
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    // Aquí puedes manejar la lógica para cada tecla presionada
+    const data = event.key.toUpperCase();
+    this.generalService.processResult.state = data;
+  }
 
   ngOnInit(): void {
-    this.intervalId = setInterval(() => {
-      this.llamarPeticion(); // Llama a tu función que realiza la petición HTTP
-    }, 1000); // Llama cada segundo (1000 milisegundos)
+    this.iniciarPeticion();
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe(); // Cancela la suscripción cuando el componente se destruye
-    }
+    clearInterval(this.intervalId); // Detiene el intervalo al destruir el componente
   }
-  detenerPeticion(): void {
-    this.generalService.processResult.contadorGlobal--;
-    clearInterval(this.intervalId); // Detiene el intervalo
-  }
-  llamarPeticion(): void {
-    // Aquí llamas a tu función que realiza la petición HTTP utilizando tu servicio
-    this.generalService.resolveProcess();
-    if (this.generalService.isProgramTerminated()){
-      this.detenerPeticion()
-    }
-  }
-  isProgramTerminated() {
 
+  iniciarPeticion(): void {
+    this.intervalId = setInterval(() => {
+      this.llamarPeticion();
+    }, 1000);
+
+  }
+
+  llamarPeticion(): void {
+    this.generalService.resolveProcess();
+    if (this.generalService.isProgramTerminated) {
+      clearInterval(this.intervalId); // Detiene el intervalo si el programa termina
+    }
   }
 }

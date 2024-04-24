@@ -15,4 +15,5 @@ export class Proceso {
   tiempoBloqueado = new ProcessTime();
   tiempoServicio = new ProcessTime();
   tiempoRestantePorEjecutar = new ProcessTime();
+  tiempoBloqueadoParaSalir = new ProcessTime();
 }

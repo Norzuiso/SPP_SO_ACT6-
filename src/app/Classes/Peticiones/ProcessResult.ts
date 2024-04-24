@@ -2,7 +2,7 @@ import {Proceso} from "./Proceso";
 import {ProcesosBloqueados} from "./ProcesosBloqueados";
 
 export class ProcessResult {
-  State: string = "C"
+  state: string = ""
   contadorGlobal: number = 0
   processInMemory: number = 0
   procesosNuevos: Proceso[] = []

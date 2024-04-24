@@ -15,12 +15,6 @@ export class EjecucionComponent {
 
   constructor(public generalService: GeneralService) {
   }
-  @HostListener('document:keydown', ['$event'])
-  handleKeyDown(event: KeyboardEvent): void {
-    // Aquí puedes manejar la lógica cuando se presiona una tecla
-    const data: string = event.key.toUpperCase();
-    //this.timerService.handleKeyDown(data)
-  }
 
   protected readonly timeToString = timeToString;
 }
