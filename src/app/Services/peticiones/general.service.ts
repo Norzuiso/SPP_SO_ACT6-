@@ -6,10 +6,14 @@ import {ProcessResult} from "../../Classes/Peticiones/ProcessResult";
   providedIn: 'root'
 })
 export class GeneralService {
-  private apiUrl = 'http://norsucio.com:8080/';
+  // prod url
+  // private apiUrl = 'http://norsucio.com:8080/';
+  private apiUrl = 'http://localhost:8081/';
+
   public processResult: ProcessResult = new ProcessResult()
   public canWeStart: boolean = false;
-  public  isProgramTerminated : boolean = false;
+  public isProgramTerminated: boolean = false;
+  state: string;
 
   constructor(private http: HttpClient) {
   }
@@ -25,7 +29,7 @@ export class GeneralService {
 
 
   resolveProcess() {
-    const url = `${this.apiUrl}result`;
+    const url = `${this.apiUrl}result/${this.state}`;
     const req = this.http.post<any>(url, this.processResult);
     req.subscribe(data => {
       this.processResult = data;

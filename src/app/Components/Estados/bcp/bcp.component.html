@@ -1,0 +1,178 @@
+
+<div>
+  <h5>Procesos Nuevos</h5>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Tiempo de Llegada</th>
+      <th scope="col">Tiempo de Finalización</th>
+      <th scope="col">Tiempo de Retorno</th>
+      <th scope="col">Tiempo de Respuesta</th>
+      <th scope="col">Tiempo de Espera</th>
+      <th scope="col">Tiempo de Servicio</th>
+      <th scope="col">Tiempo maximo Estimado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let process of this.generalService.processResult.procesosNuevos">
+      <td>{{ process.id }}</td>
+      <td>{{ process.operation }}</td>
+      <td>{{ timeToString(process.tiempoLlegada) }}</td>
+      <td>{{ timeToString(process.tiempoFinalizacion) }}</td>
+      <td>{{ timeToString(process.tiempoRetorno) }}</td>
+      <td>{{ timeToString(process.tiempoRespuesta) }}</td>
+      <td>{{ timeToString(process.tiempoEspera) }}</td>
+      <td>{{ timeToString(process.tiempoServicio) }}</td>
+      <td>{{ timeToString(process.tiempoMaxEstimado) }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>
+
+<div>
+  <h5>Procesos en espera</h5>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Tiempo de Llegada</th>
+      <th scope="col">Tiempo de Finalización</th>
+      <th scope="col">Tiempo de Retorno</th>
+      <th scope="col">Tiempo de Respuesta</th>
+      <th scope="col">Tiempo de Espera</th>
+      <th scope="col">Tiempo de Servicio</th>
+      <th scope="col">Tiempo maximo Estimado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let process of this.generalService.processResult.procesosEspera">
+      <td>{{ process.id }}</td>
+      <td>{{ process.operation }}</td>
+      <td>{{ timeToString(process.tiempoLlegada) }}</td>
+      <td>{{ timeToString(process.tiempoFinalizacion) }}</td>
+      <td>{{ timeToString(process.tiempoRetorno) }}</td>
+      <td>{{ timeToString(process.tiempoRespuesta) }}</td>
+      <td>{{ timeToString(process.tiempoEspera) }}</td>
+      <td>{{ timeToString(process.tiempoServicio) }}</td>
+      <td>{{ timeToString(process.tiempoMaxEstimado) }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>
+
+<div>
+  <h5>Proceso en ejecución</h5>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Tiempo de Llegada</th>
+      <th scope="col">Tiempo de Finalización</th>
+      <th scope="col">Tiempo de Retorno</th>
+      <th scope="col">Tiempo de Respuesta</th>
+      <th scope="col">Tiempo de Espera</th>
+      <th scope="col">Tiempo de Servicio</th>
+      <th scope="col">Tiempo maximo Estimado</th>
+      <th scope="col">Tiempo transcurrido en bloqueados</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ this.generalService.processResult.procesoEnEjecucion.id }}</td>
+      <td>{{ this.generalService.processResult.procesoEnEjecucion.operation }}</td>
+      <td>{{ timeToString(this.generalService.processResult.procesoEnEjecucion.tiempoLlegada) }}</td>
+      <td>{{ timeToString(this.generalService.processResult.procesoEnEjecucion.tiempoFinalizacion) }}</td>
+      <td>{{ timeToString(this.generalService.processResult.procesoEnEjecucion.tiempoRetorno) }}</td>
+      <td>{{ timeToString(this.generalService.processResult.procesoEnEjecucion.tiempoRespuesta) }}</td>
+      <td>{{ timeToString(this.generalService.processResult.procesoEnEjecucion.tiempoEspera) }}</td>
+      <td>{{ timeToString(this.generalService.processResult.procesoEnEjecucion.tiempoServicio) }}</td>
+      <td>{{ timeToString(this.generalService.processResult.procesoEnEjecucion.tiempoMaxEstimado) }}</td>
+      <td>{{ timeToString(this.generalService.processResult.procesoEnEjecucion.tiempoBloqueado) }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>
+
+<div>
+  <h5>Procesos Bloqueados</h5>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Tiempo de Llegada</th>
+      <th scope="col">Tiempo de Finalización</th>
+      <th scope="col">Tiempo de Retorno</th>
+      <th scope="col">Tiempo de Respuesta</th>
+      <th scope="col">Tiempo de Espera</th>
+      <th scope="col">Tiempo de Servicio</th>
+      <th scope="col">Tiempo maximo Estimado</th>
+      <th scope="col">Tiempo transcurrido en bloqueados</th>
+      <th scope="col">Tiempo para terminar bloqueado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let process of this.generalService.processResult.procesosBloqueados.procesosBloqueados">
+      <td>{{ process.id }}</td>
+      <td>{{ process.operation }}</td>
+      <td>{{ timeToString(process.tiempoLlegada) }}</td>
+      <td>{{ timeToString(process.tiempoFinalizacion) }}</td>
+      <td>{{ timeToString(process.tiempoRetorno) }}</td>
+      <td>{{ timeToString(process.tiempoRespuesta) }}</td>
+      <td>{{ timeToString(process.tiempoEspera) }}</td>
+      <td>{{ timeToString(process.tiempoServicio) }}</td>
+      <td>{{ timeToString(process.tiempoMaxEstimado) }}</td>
+      <td>{{ timeToString(process.tiempoBloqueado) }}</td>
+      <td>{{ timeToString(process.tiempoBloqueadoParaSalir) }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>
+
+<div>
+  <h5>Procesos Terminados</h5>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Operación</th>
+      <th scope="col">Resultado</th>
+      <th scope="col">Tiempo de Llegada</th>
+      <th scope="col">Tiempo de Finalización</th>
+      <th scope="col">Tiempo de Retorno</th>
+      <th scope="col">Tiempo de Respuesta</th>
+      <th scope="col">Tiempo de Espera</th>
+      <th scope="col">Tiempo de Servicio</th>
+      <th scope="col">Tiempo maximo Estimado</th>
+      <th scope="col">Tiempo transcurrido en bloqueados</th>
+      <th scope="col">Error</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let process of this.generalService.processResult.procesoTerminado">
+      <td>{{ process.id }}</td>
+      <td>{{ process.operation }}</td>
+      <td>{{ process.result }}</td>
+      <td>{{ timeToString(process.tiempoLlegada) }}</td>
+      <td>{{ timeToString(process.tiempoFinalizacion) }}</td>
+      <td>{{ timeToString(process.tiempoRetorno) }}</td>
+      <td>{{ timeToString(process.tiempoRespuesta) }}</td>
+      <td>{{ timeToString(process.tiempoEspera) }}</td>
+      <td>{{ timeToString(process.tiempoServicio) }}</td>
+      <td>{{ timeToString(process.tiempoMaxEstimado) }}</td>
+      <td>{{ timeToString(process.tiempoBloqueado) }}</td>
+      <td>{{ process.result == "Error" ? "✔" : "X" }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>

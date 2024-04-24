@@ -18,7 +18,7 @@ export class StatesManagerComponent {
   handleKeyboardEvent(event: KeyboardEvent) {
     // Aquí puedes manejar la lógica para cada tecla presionada
     const data = event.key.toUpperCase();
-    this.generalService.processResult.state = data;
+    this.generalService.state = data;
   }
 
   ngOnInit(): void {
