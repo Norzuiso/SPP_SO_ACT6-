@@ -40,7 +40,7 @@ export class GeneralService {
       this.isProgramTerminated = this.processResult.procesosEspera.length == 0
         && this.processResult.procesosBloqueados.procesosBloqueados.length == 0
         && this.processResult.procesoEnEjecucion.id == ""
-      this.state = this.processResult.state
+      console.log("Estado cuando regresa: " + this.processResult.state)
     })
   }
 }
