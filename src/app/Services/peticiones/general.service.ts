@@ -21,8 +21,10 @@ export class GeneralService {
   generateProcess(quantity: number) {
     const url = `${this.apiUrl}generateProcess/${quantity}`;
     const req = this.http.get<any>(url);
+
     req.subscribe(data => {
       this.processResult = data
+      this.processResult.state="C"
       this.canWeStart = true;
     })
   }
@@ -36,6 +38,7 @@ export class GeneralService {
       this.isProgramTerminated = this.processResult.procesosEspera.length == 0
         && this.processResult.procesosBloqueados.procesosBloqueados.length == 0
         && this.processResult.procesoEnEjecucion.id == ""
+      this.state = this.processResult.state
     })
   }
 }

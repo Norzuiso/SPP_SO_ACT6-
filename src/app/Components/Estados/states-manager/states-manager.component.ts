@@ -1,6 +1,5 @@
 import {Component, HostListener} from '@angular/core';
 import {GeneralService} from "../../../Services/peticiones/general.service";
-import {interval} from "rxjs";
 
 @Component({
   selector: 'app-states-manager',
@@ -12,13 +11,12 @@ export class StatesManagerComponent {
 
   constructor(public generalService: GeneralService) {
   }
-
+  acceptedKeys = ["C", "P", "B", "W", "E", "N"]
   // Método para detectar las teclas presionadas
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     // Aquí puedes manejar la lógica para cada tecla presionada
-    const data = event.key.toUpperCase();
-    this.generalService.state = data;
+    this.generalService.state = event.key.toUpperCase();
   }
 
   ngOnInit(): void {
