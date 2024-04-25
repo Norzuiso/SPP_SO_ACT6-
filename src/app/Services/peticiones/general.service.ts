@@ -6,10 +6,12 @@ import {ProcessResult} from "../../Classes/Peticiones/ProcessResult";
   providedIn: 'root'
 })
 export class GeneralService {
-  private apiUrl = 'http://localhost:8080/';
+  private apiUrl = 'http://norsucio.com:8080/'; // PROD
+  // private apiUrl = 'http://localhost:8080/'; // LOCAL
+
   public processResult: ProcessResult = new ProcessResult()
   public canWeStart: boolean = false;
-  public  isProgramTerminated : boolean = false;
+  public isProgramTerminated: boolean = false;
 
   constructor(private http: HttpClient) {
   }
