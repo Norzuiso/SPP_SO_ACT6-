@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {TimerService} from "../../../Services/Timer/timer.service";
 import {GeneralService} from "../../../Services/peticiones/general.service";
 import {processTimeFromSeconds, timeToString} from "../../../utils/TimeOperations";
 

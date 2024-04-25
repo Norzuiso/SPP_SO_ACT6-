@@ -9,13 +9,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {BrowserModule} from "@angular/platform-browser";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSliderModule} from "@angular/material/slider";
 import {TerminadoComponent} from "./Estados/terminado/terminado.component";
-import {ListosService} from "../Services/Estados/Listos/listos.service";
 import {ListosComponent} from "./Estados/listos/listos.component";
 import {EjecucionComponent} from "./Estados/ejecucion/ejecucion.component";
 import {BloqueadoComponent} from "./Estados/bloqueado/bloqueado.component";

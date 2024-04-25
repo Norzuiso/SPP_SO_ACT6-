@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {GenerateDataService} from "../../Services/Data/generate-data.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {GeneralService} from "../../Services/peticiones/general.service";
 
 @Component({

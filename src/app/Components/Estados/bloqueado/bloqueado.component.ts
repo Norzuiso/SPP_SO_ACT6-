@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {BloqueadoService} from "../../../Services/Estados/Bloqueado/bloqueado.service";
 import {GeneralService} from "../../../Services/peticiones/general.service";
 import {timeToString} from "../../../utils/TimeOperations";
 
