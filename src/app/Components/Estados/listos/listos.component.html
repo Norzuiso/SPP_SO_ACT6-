@@ -7,7 +7,8 @@
   <tr>
     <th scope="col">ID</th>
     <th scope="col">T.Maximo</th>
-    <th scope="col">T.transcurrido</th>
+    <th scope="col">T.T.Espera</th>
+    <th scope="col">T.T.Ejecucion</th>
 
   </tr>
   </thead>
@@ -16,6 +17,7 @@
     <td>{{ process.id }}</td>
     <td>{{ timeToString(process.tiempoMaxEstimado) }}</td>
     <td>{{ timeToString(process.tiempoEspera) }}</td>
+    <td>{{ timeToString(process.tiempoTranscurrido) }}</td>
   </tr>
   </tbody>
 </table>

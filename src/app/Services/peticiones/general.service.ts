@@ -21,8 +21,8 @@ export class GeneralService {
   constructor(private http: HttpClient) {
   }
 
-  generateProcess(quantity: number) {
-    const url = `${this.apiUrl}generateProcess/${quantity}`;
+  generateProcess(quantity: number, quantumValue: number) {
+    const url = `${this.apiUrl}generateProcess/${quantity}/${quantumValue}`;
     const req = this.http.get<any>(url);
     req.subscribe(data => {
       this.processResult = data
@@ -39,6 +39,7 @@ export class GeneralService {
       this.isProgramTerminated = this.processResult.procesosEspera.length == 0
         && this.processResult.procesosBloqueados.procesosBloqueados.length == 0
         && this.processResult.procesoEnEjecucion.id == ""
+      console.log("Estado cuando regresa: " + this.processResult.state)
     })
   }
 }

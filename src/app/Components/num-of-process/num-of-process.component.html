@@ -1,17 +1,31 @@
 <form [formGroup]="formGroup">
   <div class="row pt-5">
-    <div class="col-3">
-      <h5>Número de trabajos</h5>
+    <div class="col-3 d-flex align-items-center  justify-content-end">
+      <span class="h4">Número de trabajos</span>
     </div>
     <div class="col-6">
-      <mat-form-field  class="w-100 pt-3">
+      <mat-form-field class="w-100 pt-3">
         <input matInput
                type="number"
                formControlName="processQuantityFormControl">
       </mat-form-field>
     </div>
-    <div class="col-3">
-      <button (click)="generateJobs()" class="btn btn-outline-dark" type="button" >Generar</button>
+  </div>
+  <div class="row pt-5">
+  <div class="col-3 d-flex align-items-center  justify-content-end">
+    <span class="h4">Valor del Quantum</span>
+  </div>
+  <div class="col-6">
+    <mat-form-field class="w-100 pt-3 h-100">
+      <input matInput
+             type="number"
+             formControlName="quantumValueFormControl">
+    </mat-form-field>
+  </div>
+</div>
+  <div class="row pt-3">
+    <div class="col-6 offset-3">
+      <button (click)="generateJobs()" class="btn btn-outline-dark w-100" type="button"><h1>Iniciar</h1></button>
     </div>
   </div>
 </form>

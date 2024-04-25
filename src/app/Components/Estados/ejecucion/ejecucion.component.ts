@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component} from '@angular/core';
 import {GeneralService} from "../../../Services/peticiones/general.service";
 import {timeToString} from "../../../utils/TimeOperations";
 
@@ -8,7 +8,6 @@ import {timeToString} from "../../../utils/TimeOperations";
   styleUrl: './ejecucion.component.css'
 })
 export class EjecucionComponent {
-  // Espacio de memoria de 4 procesos
 
   constructor(public generalService: GeneralService) {
   }
