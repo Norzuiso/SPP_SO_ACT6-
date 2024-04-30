@@ -10,13 +10,13 @@ export class GeneralService {
   //private apiUrl = 'http://norsucio.com:8081/'; //prod act 8
   //private apiUrl = 'http://localhost:8081/'; //local act 8
 
-  private apiUrl = 'http://norsucio.com:8082/';  //prod act 10
-  //private apiUrl = 'http://localhost:8082/';  //local act 10
+  //private apiUrl = 'http://norsucio.com:8082/';  //prod act 10
+  private apiUrl = 'http://localhost:8082/';  //local act 10
 
   public processResult: ProcessResult = new ProcessResult()
   public canWeStart: boolean = false;
   public isProgramTerminated: boolean = false;
-  state: string;
+  state: string = "C";
 
   constructor(private http: HttpClient) {
   }
@@ -40,7 +40,7 @@ export class GeneralService {
       this.isProgramTerminated = this.processResult.procesosEspera.length == 0
         && this.processResult.procesosBloqueados.procesosBloqueados.length == 0
         && this.processResult.procesoEnEjecucion.id == ""
-      console.log("Estado cuando regresa: " + this.processResult.state)
+      this.state = this.processResult.state
     })
   }
 }

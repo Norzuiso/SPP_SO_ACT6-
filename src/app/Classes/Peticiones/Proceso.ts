@@ -5,6 +5,7 @@ export class Proceso {
   operation = "";
   result = "";
   llegada = false;
+  respuesta = false
   tiempoMaxEstimado = new ProcessTime();
   tiempoTranscurrido = new ProcessTime();
   tiempoLlegada = new ProcessTime();

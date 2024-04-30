@@ -21,4 +21,9 @@ export class TerminadoComponent {
     this.generalService.processResult.procesoTerminado.forEach((value, index) => result = sumTimer(result, value.tiempoServicio))
     return timeToString(result);
   }
+
+  calculateTiempoRetorno() {
+    let result = new ProcessTime();
+    this.generalService.processResult.procesoTerminado.forEach((value, index) => result = sumTimer(result, value.tiempoRetorno))
+    return timeToString(result);  }
 }
