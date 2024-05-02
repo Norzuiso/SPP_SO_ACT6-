@@ -8,7 +8,7 @@ import {ProcessResult} from "../../Classes/Peticiones/ProcessResult";
 export class GeneralService {
   // prod url
   //private apiUrl = 'http://norsucio.com:8081/';
-  private apiUrl = 'http://localhost:8081/';
+  private apiUrl = 'http://localhost:8083/';
 
   public processResult: ProcessResult = new ProcessResult()
   public canWeStart: boolean = false;

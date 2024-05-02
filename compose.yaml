@@ -22,7 +22,7 @@ services:
     container_name: act8-back
     image: act8-back  # Nombre de imagen personalizado para el servicio Apache
     ports:
-      - "8081:8081"
+      - "8083:8083"
     volumes:
       - ./act8.jar:/usr/src/app/act8.jar
     networks:
