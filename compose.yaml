@@ -6,11 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile_apache
     container_name: act8-front
+    image: act8-front  # Nombre de imagen personalizado para el servicio Apache
     volumes:
       - ./public-html/:/usr/local/apache2/htdocs/
       - ./my-httpd.conf:/usr/local/apache2/conf/my-httpd.conf
     ports:
-      - "8080:80"
+      - "8008:80"
     networks:
       - mynetwork
 
@@ -19,6 +20,7 @@ services:
       context: .
       dockerfile: Dockerfile_java
     container_name: act8-back
+    image: act8-back  # Nombre de imagen personalizado para el servicio Apache
     ports:
       - "8081:8081"
     volumes:
