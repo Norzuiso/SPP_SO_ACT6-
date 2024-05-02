@@ -11,7 +11,7 @@ export class StatesManagerComponent {
 
   constructor(public generalService: GeneralService) {
   }
-  acceptedKeys = ["C", "P", "B", "W", "E", "N"]
+
   // Método para detectar las teclas presionadas
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {

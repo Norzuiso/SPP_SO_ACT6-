@@ -1,7 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {GeneralService} from "../../../Services/peticiones/general.service";
-import {timeToString} from "../../../utils/TimeOperations";
+import {
+  calculateTiempoRespuesta,
+  calculateTiempoServicio,
+  calculateTiempoTotalTranscurrido,
+  calculateTiempoEspera,
+  timeToString
+} from "../../../utils/TimeOperations";
 
 @Component({
   selector: 'app-bcp',
@@ -15,4 +21,10 @@ export class BcpComponent {
   }
 
   protected readonly timeToString = timeToString;
+
+
+  protected readonly calculateTiempoEspera = calculateTiempoEspera;
+  protected readonly calculateTiempoRespuesta = calculateTiempoRespuesta;
+  protected readonly calculateTiempoServicio = calculateTiempoServicio;
+  protected readonly calculateTiempoTotalTranscurrido = calculateTiempoTotalTranscurrido;
 }

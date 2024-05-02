@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {NuevosService} from "../../../Services/Estados/Nuevo/nuevos.service";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {BrowserModule} from "@angular/platform-browser";
-import {CommonModule} from "@angular/common";
 import {GeneralService} from "../../../Services/peticiones/general.service";
-import {Proceso} from "../../../Classes/Peticiones/Proceso";
 import {timeToString} from "../../../utils/TimeOperations";
 
 @Component({

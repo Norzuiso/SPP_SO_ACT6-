@@ -1,4 +1,5 @@
 import {ProcessTime} from "../Classes/ProcessTime";
+import {Proceso} from "../Classes/Peticiones/Proceso";
 
 export const processTimeOneSecond = new ProcessTime();
 
@@ -49,4 +50,35 @@ export function timeToString(processTime: ProcessTime): string {
   timeStr += processTime.minutes.toString().length === 1 ? "0" + processTime.minutes.toString() : processTime.minutes.toString()
   timeStr += processTime.seconds.toString().length === 1 ? ":0" + processTime.seconds.toString() : ":" + processTime.seconds.toString()
   return timeStr
+}
+
+export function calculateTiempoRespuesta(process: Proceso) {
+  if (process.respuesta) {
+    const respuesta = restTime(process.tiempoRespuesta, process.tiempoLlegada)
+    return timeToString(respuesta)
+  }
+  return timeToString(new ProcessTime())
+}
+
+export function calculateTiempoServicio(process: Proceso) {
+  return timeToString(process.tiempoServicio);
+}
+
+export function calculateTiempoTotalTranscurrido(process: Proceso) {
+  const tiempoTranscurrido = process.tiempoTranscurrido;
+  const tiempoEsperaPlusTiempoBloqueado = getTiempoEsperaPlusBloqueado(process);
+  const tiempoEsperaTiempoBloqueadoTiempoTranscurrido = sumTimer(tiempoEsperaPlusTiempoBloqueado, tiempoTranscurrido);
+  return timeToString(tiempoEsperaTiempoBloqueadoTiempoTranscurrido);
+}
+
+function getTiempoEsperaPlusBloqueado(process: Proceso) {
+  const tiempoEspera = process.tiempoEspera;
+  const tiempoBloqueado = process.tiempoBloqueado;
+  return sumTimer(tiempoEspera, tiempoBloqueado);
+}
+
+export function calculateTiempoEspera(process: Proceso){
+  const tiempoEsperaPlusTiempoBloqueado = getTiempoEsperaPlusBloqueado(process);
+  return timeToString(tiempoEsperaPlusTiempoBloqueado)
+
 }
