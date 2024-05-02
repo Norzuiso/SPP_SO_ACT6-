@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  apache:
+    build:
+      context: .
+      dockerfile: Dockerfile_apache
+    container_name: act8-front
+    volumes:
+      - ./public-html/:/usr/local/apache2/htdocs/
+      - ./my-httpd.conf:/usr/local/apache2/conf/my-httpd.conf
+    ports:
+      - "8080:80"
+    networks:
+      - mynetwork
+
+  java_service:
+    build:
+      context: .
+      dockerfile: Dockerfile_java
+    container_name: act8-back
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./act8.jar:/usr/src/app/act8.jar
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

@@ -1,0 +1,5 @@
+FROM openjdk:21
+
+COPY act8.jar /usr/src/app/act8.jar
+EXPOSE 8081
+CMD ["java", "-jar", "/usr/src/app/act8.jar"]
