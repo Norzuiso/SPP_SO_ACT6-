@@ -15,6 +15,7 @@ export class TimerComponent {
 
   getContadorGlobalFormat() {
     const processTime = processTimeFromSeconds(this.generalService.processResult.contadorGlobal);
+
     return timeToString(processTime);
   }
 }

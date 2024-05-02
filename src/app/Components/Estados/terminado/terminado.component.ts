@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
 import {GeneralService} from "../../../Services/peticiones/general.service";
-import {restTime, sumTimer, timeToString} from "../../../utils/TimeOperations";
-import {ProcessTime} from "../../../Classes/ProcessTime";
-import {Proceso} from "../../../Classes/Peticiones/Proceso";
+import {
+  calculateTiempoEspera,
+  calculateTiempoTotalTranscurrido,
+  calculateTiempoRespuesta,
+  timeToString
+} from "../../../utils/TimeOperations";
 
 @Component({
   selector: 'app-terminado',
@@ -17,22 +20,7 @@ export class TerminadoComponent {
   protected readonly timeToString = timeToString;
 
 
-  calculateTiempoServicio() {
-    let result = new ProcessTime();
-    this.generalService.processResult.procesoTerminado.forEach((value, index) => result = sumTimer(result, value.tiempoServicio))
-    return timeToString(result);
-  }
-
-  calculateTiempoRetorno() {
-    let result = new ProcessTime();
-    this.generalService.processResult.procesoTerminado.forEach((value, index) => result = sumTimer(result, value.tiempoRetorno))
-    return timeToString(result);  }
-
-  calculateTiempoRespuesta(process: Proceso) {
-    if (process.respuesta){
-      const respuesta = restTime(process.tiempoRespuesta, process.tiempoLlegada)
-      return timeToString(respuesta)
-    }
-    return timeToString(new ProcessTime())
-  }
+  protected readonly calculateTiempoTotalTranscurrido = calculateTiempoTotalTranscurrido;
+  protected readonly calculateTiempoEspera = calculateTiempoEspera;
+  protected readonly calculateTiempoRespuesta = calculateTiempoRespuesta;
 }
