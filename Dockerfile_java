@@ -1,5 +1,5 @@
 FROM openjdk:21
 
-COPY act8.jar /usr/src/app/act8.jar
+COPY act10.jar /usr/src/app/act10.jar
 EXPOSE 8082
-CMD ["java", "-jar", "/usr/src/app/act8.jar"]
+CMD ["java", "-jar", "/usr/src/app/act10.jar"]

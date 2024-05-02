@@ -5,12 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_apache
-    container_name: act8-front
+    container_name: act10-front
     volumes:
       - ./public-html/:/usr/local/apache2/htdocs/
       - ./my-httpd.conf:/usr/local/apache2/conf/my-httpd.conf
     ports:
-      - "8081:80"
+      - "8010:80"
     networks:
       - mynetwork
 
@@ -22,7 +22,7 @@ services:
     ports:
       - "8082:8082"
     volumes:
-      - ./act8.jar:/usr/src/app/act8.jar
+      - ./act10.jar:/usr/src/app/act10.jar
     networks:
       - mynetwork
 
